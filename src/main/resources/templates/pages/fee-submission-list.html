@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fee Submission List</title>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/vendors/simple-datatables/style.css}" rel="stylesheet">
+
+</head>
+<body>
+    <div class="main-content container-fluid">
+        <section class="section">
+            <div class="card">
+                <div class="card-header">
+                    List of Students
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped" id="table1">
+                        <thead>
+                            <tr>
+                                <th>Student Name</th>
+                                <th>Batch Name</th>
+                                <th>Course Name</th>
+                                <th>Enrollment Date</th>
+                                <th>Fee Per Month</th>
+                                <th>Defaulter</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Data will be dynamically added here with Thymeleaf -->
+                            <tr th:each="student : ${students}">
+                                <td th:text="${student.name}"></td>
+                                <td>
+                                    <span th:each="batch : ${student.batches}" th:text="${batch.batchName}"></span>
+                                </td>
+                                <td>
+                                    <span th:each="batch : ${student.batches}" th:text="${batch.course.courseName}"></span>
+                                </td>
+                                <td th:text="${student.enrollmentDate}"></td>
+                                <td th:text="${student.feePerMonth}"></td>
+                                <td th:text="${student.isDefaulter ? 'Yes' : 'No'}"></td>
+                                <td>
+                                    <a class="btn btn-info" th:href="@{/fees/generate-receipt(studentId=${student.studentId})}">Generate Receipt</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script th:src="@{/js/feather-icons/feather.min.js}"></script>
+    <script th:src="@{/vendors/perfect-scrollbar/perfect-scrollbar.min.js}"></script>
+    <script th:src="@{/vendors/simple-datatables/simple-datatables.js}"></script>
+    <script th:src="@{/js/vendors.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>

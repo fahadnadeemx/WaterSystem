@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Customer</title>
+</head>
+<body>
+    <h2>Customer Form</h2>
+    <form action="#" th:action="@{/customers/submit}" th:object="${customer}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" th:field="*{name}" readonly><br><br>
+        
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" th:field="*{address}" readonly><br><br>
+        
+        <label for="contactNumber">Contact Number:</label>
+        <input type="text" id="contactNumber" name="contactNumber" th:field="*{contactNumber}" readonly><br><br>
+        
+        <label for="bottleDelivered">Bottle Delivered:</label>
+        <input type="text" id="bottleDelivered" name="bottleDelivered" th:field="*{bottleDelivered}"><br><br>
+        
+        <label for="emptyBottleReceived">Empty Bottle Received:</label>
+        <input type="text" id="emptyBottleReceived" name="emptyBottleReceived" th:field="*{emptyBottleReceived}"><br><br>
+        
+        <label for="receivedAmount">Received Amount:</label>
+        <input type="text" id="receivedAmount" name="receivedAmount" th:value="${customer.balanceAmount - customer.receivedAmount}" readonly><br><br>
+        
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>

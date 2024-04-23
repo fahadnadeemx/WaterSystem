@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Batch - Voler Admin Dashboard</title>
+    
+    <!-- Add Bootstrap CSS -->
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    
+    <link rel="stylesheet" th:href="@{/vendors/perfect-scrollbar/perfect-scrollbar.css}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+    <link rel="shortcut icon" th:href="@{/images/favicon.svg}" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            text-align: left;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- Basic Vertical form layout section start -->
+        <section id="basic-vertical-layouts">
+            <div class="row match-height">
+                <div class="col-md-6 col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Add Teacher</h4>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-body">
+        <form th:action="@{/batches/}" th:object="${batch}" method="post">
+            <div class="form-group">
+                <label for="batchName">Batch Name:</label>
+                <input type="text" class="form-control" id="batchName" th:field="*{batchName}" required>
+            </div>
+            <div class="form-group">
+                <label for="course">Course:</label>
+                <select class="form-control" id="course" th:field="*{course}">
+                    <option th:each="course : ${courses}" th:value="${course.courseId}" th:text="${course.courseName}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="teacher">Teacher:</label>
+                <select class="form-control" id="teacher" th:field="*{teacher}">
+                    <option th:each="teacher : ${teachers}" th:value="${teacher.teacherId}" th:text="${teacher.name}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="students">Students:</label>
+                <select multiple class="form-control" id="students" th:field="*{students}">
+                    <option th:each="student : ${students}" th:value="${student.studentId}" th:text="${student.name}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="batchStartingDate">Starting Date:</label>
+                <input type="date" class="form-control" id="batchStartingDate" th:field="*{batchStartingDate}" required>
+            </div>
+            <div class="form-group">
+                <label for="batchEndingDate">Ending Date:</label>
+                <input type="date" class="form-control" id="batchEndingDate" th:field="*{batchEndingDate}" required>
+            </div>
+  <div class="col-12 d-flex justify-content-end">
+                                                <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                              
+                                  
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- // Basic Vertical form layout section end -->
+    </div>
+    <!-- Add Bootstrap JS -->
+    <script src="/js/bootstrap.bundle.min.js"></script>
+       <script src="/js/feather-icons/feather.min.js"></script>
+    <script src="/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

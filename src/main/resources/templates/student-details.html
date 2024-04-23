@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            text-align: left;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Contact Number</th>
+                <th>Enrollment Date</th>
+                <th>Fee per Month</th>
+                <th>Is Defaulter</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Iterate over students and display their information -->
+            <tr th:each="student : ${students}">
+                <td th:text="${student.studentId}"></td>
+                <td th:text="${student.name}"></td>
+                <td th:text="${student.address}"></td>
+                <td th:text="${student.email}"></td>
+                <td th:text="${student.password}"></td>
+                <td th:text="${student.contactNumber}"></td>
+                <td th:text="${student.enrollmentDate}"></td>
+                <td th:text="${student.feePerMonth}"></td>
+                <td th:text="${student.defaulter} ? 'Yes' : 'No'"></td>
+                
+<th>Action</th>
+
+<!-- Iterate over students and display their information -->
+<tr th:each="student : ${students}">
+    
+    <td>
+        <a th:href="@{'/students/' + ${student.studentId}}">Edit</a> <!-- Link to update page -->
+        <form th:action="@{'/students/' + ${student.studentId}}" th:method="delete">
+            <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
+        </form> <!-- Form for delete action -->
+    </td>
+</tr>
+
+                
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        // You can add JavaScript functionalities here if needed
+    </script>
+</body>
+</html>

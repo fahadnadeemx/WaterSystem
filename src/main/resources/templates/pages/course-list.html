@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course List - Voler Admin Dashboard</title>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/vendors/simple-datatables/style.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="main-content container-fluid">
+    
+    
+        <section class="section">
+            <div class="card">
+                <div class="card-header">
+                    Course List
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped" id="courseTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Iterate over courses and display their information -->
+                            <tr th:each="course : ${courses}">
+                                <td th:text="${course.courseId}"></td>
+                                <td th:text="${course.courseName}"></td>
+                                <td>
+                                    <a class="btn btn-info" th:href="@{/courses/{id}(id=${course.courseId})}">View Details</a>
+                                    <a class="btn btn-info" th:href="@{/courses/{id}/edit(id=${course.courseId})}">Edit</a>
+                                    <form th:action="@{/courses/{id}(id=${course.courseId})}" method="post" style="display: inline;">
+                                        <input type="hidden" name="_method" value="delete" />
+                                        <button class="btn btn-info" type="submit">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script th:src="@{/js/feather-icons/feather.min.js}"></script>
+    <script th:src="@{/vendors/perfect-scrollbar/perfect-scrollbar.min.js}"></script>
+    <script th:src="@{/vendors/simple-datatables/simple-datatables.js}"></script>
+    <script th:src="@{/js/vendors.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            new simpleDatatables.DataTable("#courseTable", {
+                // Add your configuration options here
+            });
+        });
+    </script>
+</body>
+</html>

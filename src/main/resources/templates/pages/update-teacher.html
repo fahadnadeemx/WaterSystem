@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Teacher</title>
+    
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    
+    <link rel="stylesheet" th:href="@{/vendors/perfect-scrollbar/perfect-scrollbar.css}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+    <link rel="shortcut icon" th:href="@{/images/favicon.svg}" type="image/x-icon">
+</head>
+<body>
+    <div id="app">
+        <!-- Basic Vertical form layout section start -->
+        <section id="basic-vertical-layouts">
+            <div class="row match-height">
+                <div class="col-md-6 col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Add Teacher</h4>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-body">
+                             
+                                <form th:action="@{'/teachers/' + ${teacher.teacherId}}" th:object="${teacher}"method="post" class="form form-vertical" onsubmit="return validateForm()">
+                                    <div class="form-body">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group has-icon-left">
+                                                    <label for="name">Name</label>
+                                                    <div class="position-relative">
+                                                        <input type="text" class="form-control" th:field="*{name}" placeholder="Name" id="name" required>
+                                                        <div class="form-control-icon">
+                                                            <i data-feather="user"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group has-icon-left">
+                                                    <label for="cnic">CNIC</label>
+                                                    <div class="position-relative">
+                                                        <input type="text" class="form-control" th:field="*{cnic}" placeholder="CNIC" id="cnic" required>
+                                                        <div class="form-control-icon">
+                                                            <i data-feather="id-card"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group has-icon-left">
+                                                    <label for="phoneNumber">Phone Number</label>
+                                                    <div class="position-relative">
+                                                        <input type="text" class="form-control" th:field="*{phoneNumber}" placeholder="Phone Number" id="phoneNumber" required>
+                                                        <div class="form-control-icon">
+                                                            <i data-feather="phone"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group has-icon-left">
+                                                    <label for="email">Email</label>
+                                                    <div class="position-relative">
+                                                        <input type="text" class="form-control" th:field="*{email}" placeholder="Email" id="email" required>
+                                                        <div class="form-control-icon">
+                                                            <i data-feather="mail"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group has-icon-left">
+                                                    <label for="password">Password</label>
+                                                    <div class="position-relative">
+                                                        <input type="password" class="form-control" th:field="*{password}" placeholder="Password" id="password" required>
+                                                        <div class="form-control-icon">
+                                                            <i data-feather="lock"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group has-icon-left">
+                                                    <label for="experience">Experience</label>
+                                                    <div class="position-relative">
+                                                        <input type="text" class="form-control" th:field="*{experience}" placeholder="Experience" id="experience" required>
+                                                        <div class="form-control-icon">
+                                                            <i data-feather="book"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group has-icon-left">
+                                                    <label for="education">Education</label>
+                                                    <div class="position-relative">
+                                                        <input type="text" class="form-control" th:field="*{education}" placeholder="Education" id="education" required>
+                                                        <div class="form-control-icon">
+                                                            <i data-feather="book-open"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group has-icon-left">
+                                                    <label for="skills">Skills</label>
+                                                    <div class="position-relative">
+                                                        <select multiple class="form-select" th:field="*{skills}" id="skills" th:classappend="${#fields.hasErrors('skills')} ? 'is-invalid'" required>
+                                                            <option value="Graphic Designing">Graphic Designing</option>
+                                                            <option value="Digital Marketing">Digital Marketing</option>
+                                                            <option value="Social Media Marketing">Social Media Marketing</option>
+                                                            <option value="Web Development">Web Development</option>
+                                                            <option value="Programming">Programming</option>
+                                                            <option value="Front End Development">Front End Development</option>
+                                                            <option value="Amazon">Amazon</option>
+                                                            <option value="Customer Service">Customer Service</option>
+                                                            <option value="Communication">Communication</option>
+                                                            <option value="Teaching">Teaching</option>
+                                                            <option value="Android Development">Android Development</option>
+                                                            <option value="AI">AI</option>
+                                                            <option value="Animations">Animations</option>
+                                                            <option value="Video Editing">Video Editing</option>
+                                                            <option value="Project Management">Project Management</option>
+                                                            <option value="Testing">Testing</option>
+                                                            <option value="Automation Testing">Automation Testing</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 d-flex justify-content-end">
+                                                <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                                <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- // Basic Vertical form layout section end -->
+    </div>
+    <script src="/js/feather-icons/feather.min.js"></script>
+    <script src="/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Feather icons
+            feather.replace();
+        });
+        
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var cnic = document.getElementById('cnic').value;
+            var phoneNumber = document.getElementById('phoneNumber').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var experience = document.getElementById('experience').value;
+            var education = document.getElementById('education').value;
+            var skills = document.getElementById('skills').value;
+            
+            if (name === "" || cnic === "" || phoneNumber === "" || email === "" || password === "" || experience === "" || education === "" || skills === "") {
+                alert("Please fill out all fields.");
+                return false;
+            }
+            
+            return true;
+        }
+    </script>
+</body>
+</html>

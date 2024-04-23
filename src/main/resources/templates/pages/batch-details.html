@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batch List - Voler Admin Dashboard</title>
+    
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/vendors/simple-datatables/style.css}" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            text-align: left;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content container-fluid">
+        <h2>Enrolled Students</h2>
+        <p>Batch name: <span th:text="${batch.batchName}"></span></p>
+        <table class="table table-striped" id="studentTable">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Student Email</th>
+                    <th>Student Number</th>
+                    <th>Enrollment Date</th>
+                    <th>Fee Per Month</th>
+                    <th>Is Defaulter</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Iterate over students and display their information -->
+                <tr th:each="student : ${batch.students}">
+                    <td th:text="${student.name}"></td>
+                    <td th:text="${student.email}"></td>
+                    <td th:text="${student.contactNumber}"></td>
+                    <td th:text="${#temporals.format(student.enrollmentDate, 'yyyy-MM-dd')}"></td>
+                    <td th:text="${student.feePerMonth}"></td>
+                    <td th:text="${student.isDefaulter ? 'Yes' : 'No'}"></td>
+                    <td>
+                        <form th:action="@{/batches/deleteStudent}" method="post">
+                            <input type="hidden" name="batchId" th:value="${batch.batchId}"/>
+                            <input type="hidden" name="studentId" th:value="${student.studentId}"/>
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script th:src="@{/js/feather-icons/feather.min.js}"></script>
+    <script th:src="@{/vendors/perfect-scrollbar/perfect-scrollbar.min.js}"></script>
+    <script th:src="@{/vendors/simple-datatables/simple-datatables.js}"></script>
+    <script th:src="@{/js/vendors.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>

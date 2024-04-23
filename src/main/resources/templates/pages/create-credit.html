@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Credit Tracker</title>
+</head>
+<body>
+    <h1>Credit Tracker</h1>
+    
+    <!-- Form to add a credit -->
+    <form action="#" th:action="@{/credit/add}" th:object="${creditForm}" method="post">
+        Description: <input type="text" th:field="*{description}"/><br/>
+        Amount: <input type="number" step="0.01" th:field="*{amount}"/><br/>
+        <button type="submit">Add Credit</button>
+    </form>
+    
+    <br/>
+    
+    <!-- Table to display credits -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Credit ID</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="credit : ${credits}">
+                <td th:text="${credit.creditId}"></td>
+                <td th:text="${credit.description}"></td>
+                <td th:text="${credit.amount}"></td>
+                <td>
+                    <a th:href="@{'/deleteCredit/' + ${credit.creditId}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

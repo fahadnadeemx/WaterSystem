@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            text-align: left;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Teacher Details</h2>
+    <p th:text="'Name: ' + ${teacher.name}" />
+    <p th:text="'CNIC: ' + ${teacher.cnic}" />
+    <p th:text="'Phone Number: ' + ${teacher.phoneNumber}" />
+    <p th:text="'Email: ' + ${teacher.email}" />
+    <p th:text="'Experience: ' + ${teacher.experience}" />
+    <p th:text="'Education: ' + ${teacher.education}" />
+    <p th:text="'Skills: ' + ${teacher.skills}" />
+</body>
+
+</html>

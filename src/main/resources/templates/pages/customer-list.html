@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer List</title>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/vendors/simple-datatables/style.css}" rel="stylesheet">
+</head>
+<body>
+    <h2>Customer List</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Contact Number</th>
+            <th>Balance Amount</th>
+            <th>Received Amount</th>
+            <th>Employee Name</th>
+            <th>Employee Number</th>
+            <th>Employee Contact No</th>
+            <th>Select</th>
+        </tr>
+        <tr th:each="customer : ${customers}">
+            <td th:text="${customer.id}"></td>
+            <td th:text="${customer.name}"></td>
+            <td th:text="${customer.address}"></td>
+            <td th:text="${customer.contactNumber}"></td>
+            <td th:text="${customer.balanceAmount}"></td>
+            <td th:text="${customer.receivedAmount}"></td>
+            <td th:text="${customer.employee.name}"></td>
+            <td th:text="${customer.employee.number}"></td>
+     <td th:text="${customer.employee.contactNumber}"></td>
+            <td><a th:href="@{/customers/generate-record(Id=${customer.id})}">Select</a></td>
+        </tr>
+    </table>
+
+    <script th:src="@{/js/feather-icons/feather.min.js}"></script>
+    <script th:src="@{/vendors/perfect-scrollbar/perfect-scrollbar.min.js}"></script>
+    <script th:src="@{/vendors/simple-datatables/simple-datatables.js}"></script>
+    <script th:src="@{/js/vendors.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>

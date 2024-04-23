@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Expense Tracker</title>
+</head>
+<body>
+    <h1>Expense Tracker</h1>
+    
+    <!-- Form to add an expense -->
+    <form action="#" th:action="@{/expense/add}" th:object="${expense}" method="post">
+        Description: <input type="text" th:field="*{description}"/><br/>
+        Amount: <input type="number" step="0.01" th:field="*{amount}"/><br/>
+        <button type="submit">Add Expense</button>
+    </form>
+    
+    <br/>
+    
+    <!-- Table to display expenses -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Expense ID</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="expense : ${expenses}">
+                <td th:text="${expense.expenseId}"></td>
+                <td th:text="${expense.description}"></td>
+                <td th:text="${expense.amount}"></td>
+                <td>
+                    <a th:href="@{'/deleteExpense/' + ${expense.expenseId}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

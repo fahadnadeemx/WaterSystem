@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+        <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+
+    <link rel="stylesheet" th:href="@{/css/Chart.min.css}">
+
+    <link rel="stylesheet" th:href="@{/css/perfect-scrollbar.css}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+    <link rel="shortcut icon" th:href="@{/images/favicon.svg}" type="image/x-icon">
+
+</head>
+<body>
+<div id="sidebar" class='active' th:fragment="sidebar"><!--sidebar-->
+    <div class="sidebar-wrapper active">
+        <div class="sidebar-header">
+            <img src="/images/logo.svg" alt="AxcoreAcademy">
+        </div>
+        <div class="sidebar-menu">
+             <ul class="menu">
+
+                <!-- Sidebar Title: Students -->
+                <li class='sidebar-title'>Students</li>
+                <li class="sidebar-item"><a href="/students/" class='sidebar-link'><i data-feather="users"></i> List of Students</a></li>
+                <li class="sidebar-item"><a href="/students/add" class='sidebar-link'><i data-feather="edit"></i> Add Students</a></li>
+           	    <li class="sidebar-item"><a href="/fees/" class='sidebar-link'><i data-feather="list"></i>Student Fee Status</a></li>
+
+                <!-- Sidebar Title: Teachers -->
+                <li class='sidebar-title'>Teachers</li>
+                <li class="sidebar-item"><a href="/teachers/" class='sidebar-link'><i data-feather="users"></i> List of Teachers</a></li>
+                <li class="sidebar-item"><a href="/teachers/add" class='sidebar-link'><i data-feather="edit"></i> Add/Edit Teachers</a></li>
+             	<li class="sidebar-item"><a href="/teacher-salary-submissions/list" class='sidebar-link'><i data-feather="list"></i> View All Salaries</a></li>
+
+                <!-- Sidebar Title: Course -->
+                <li class='sidebar-title'>Course</li>
+                <li class="sidebar-item"><a href="/courses/" class='sidebar-link'><i data-feather="book"></i> Add/View Course</a></li>
+
+                <!-- Sidebar Title: Batch -->
+                <li class='sidebar-title'>Batch</li>
+                <li class="sidebar-item"><a href="/batches/" class='sidebar-link'><i data-feather="layers"></i> List of Batches</a></li>
+                <li class="sidebar-item"><a href="/batches/add" class='sidebar-link'><i data-feather="plus-circle"></i> Create Batches</a></li>
+
+                <!-- Sidebar Title: Accounts -->
+                <li class='sidebar-title'>Accounts</li>
+                <li class="sidebar-item"><a href="/credit" class='sidebar-link'><i data-feather="dollar-sign"></i> Add Expenses</a></li>
+                <li class="sidebar-item"><a href="/expense/" class='sidebar-link'><i data-feather="credit-card"></i> Add Credit</a></li>
+                <li class="sidebar-item"><a href="/accounts" class='sidebar-link'><i data-feather="file-text"></i> View Accounts</a></li>
+            </ul>
+        </div>
+        <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+    </div>
+</div>
+
+
+</body>
+</html>

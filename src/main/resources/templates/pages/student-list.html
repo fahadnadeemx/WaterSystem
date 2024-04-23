@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/vendors/simple-datatables/style.css}" rel="stylesheet">
+      
+  
+</head>
+<body>
+  <div id="main">
+        <div class="main-content container-fluid">
+            <div class="page-title">
+                <div class="row">
+                    <div class="col-12 col-md-6 order-md-1 order-last">
+                        <h3>Datatable</h3>
+                  </div>
+     
+                </div>
+            </div>
+            <section class="section">
+                <div class="card">
+              
+                    <div class="card-body">
+                  
+        <table class="table" id="studentTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Password</th>
+                    <th>Contact Number</th>
+                    <th>Enrollment Date</th>
+                    <th>Fee per Month</th>
+                    <th>Is Defaulter</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Iterate over students and display their information -->
+                <tr th:each="student : ${students}">
+                    <td th:text="${student.studentId}"></td>
+                    <td th:text="${student.name}"></td>
+                    <td th:text="${student.address}"></td>
+                    <td th:text="${student.password}"></td>
+                    <td th:text="${student.contactNumber}"></td>
+                    <td th:text="${student.enrollmentDate}"></td>
+                    <td th:text="${student.feePerMonth}"></td>
+                    <td th:text="${student.defaulter ? 'Yes' : 'No'}"></td>
+                    <td>
+                        <a class="btn btn-info" th:href="@{'/students/' + ${student.studentId} + '/edit'}">Edit</a>
+                   </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</section>
+</div>
+</div>
+<script th:src="@{/js/feather-icons/feather.min.js}"></script>
+<script th:src="@{/js/feather-icons/feather.js.map}"></script>
+<script th:src="@{/js/feather-icons/feather.js}"></script>
+<script th:src="@{/js/feather-icons/feather.min.js}"></script>
+<script th:src="@{/js/feather-icons/feather.min.js.map}"></script>
+<script th:src="@{/js/pages/dashboard.js}"></script>
+<script th:src="@{/js/pages/form-editor.js}"></script>
+<script th:src="@{/js/pages/ui-apexchart.js}"></script>
+<script th:src="@{/js/pages/ui-chartjs.js}"></script>
+<script th:src="@{/js/pages/widgets.js}"></script>
+    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/vendors/simple-datatables/simple-datatables.js}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            new simpleDatatables.DataTable("#studentTable", {
+                searchable: true
+            });
+        });
+    </script>
+</body>
+</html>

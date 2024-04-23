@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            text-align: left;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h2>Receipt Details</h2>
+<p>Receipt Number: <span th:text="${feeSubmission.receiptNumber}"></span></p>
+<p>Student Name: <span th:text="${feeSubmission.student.name}"></span></p>
+<p>Batch Name: <span th:text="${feeSubmission.batch.batchName}"></span></p>
+<p>Course Name: <span th:text="${feeSubmission.course.courseName}"></span></p>
+<p>Amount Paid: <span th:text="${feeSubmission.amountPaid}"></span></p>
+<p>Fee Pay Date: <span th:text="${feeSubmission.feePayDate}"></span></p>
+<!-- Add print button and functionality here -->
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Course</title>
+<style>
+body {
+	font-family: Arial, sans-serif;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table, th, td {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+th {
+	background-color: #f2f2f2;
+	text-align: left;
+}
+
+tr:hover {
+	background-color: #f2f2f2;
+}
+</style>
+</head>
+
+<body>
+    <h2>Add Course</h2>
+    <form th:action="@{/courses/}" th:object="${course}" method="post">
+        <!-- Input fields for course details -->
+        <label>Name:</label><br>
+        <input type="text" th:field="*{courseName}" required><br>
+        <input type="submit" value="Add">
+    </form>
+</body>
+
+
+
+
+</html>

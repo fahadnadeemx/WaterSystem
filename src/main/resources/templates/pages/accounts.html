@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datatable - Voler Admin Dashboard</title>
+    
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/vendors/simple-datatables/style.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="main-content container-fluid">
+        <section class="section">
+            <div class="card">
+                <div class="card-header">
+                    Simple Datatable
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped" id="table1">
+                        <thead>
+                            <tr>
+                                <th>Account ID</th>
+                                <th>Transaction Type</th>
+                                <th>Amount</th>
+                                <th>Transaction Date</th>
+                                <th>Description</th>
+                                <th>Remaining Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Data will be dynamically added here with Thymeleaf -->
+                            <tr th:each="account : ${accounts}">
+                                <td th:text="${account.accountId}"></td>
+                                <td>
+                                    <span th:if="${account.transactionType == T(com.axcore.portal.entity.Account$TransactionType).CREDIT}" class="badge bg-success" th:text="'Credit'"></span>
+                                    <span th:if="${account.transactionType == T(com.axcore.portal.entity.Account$TransactionType).DEBIT}"  class="badge bg-danger" th:text="'Debit'"></span>
+                                </td>
+                                <td th:text="${account.amount}"></td>
+                                <td th:text="${account.transactionDate}"></td>
+                                <td th:text="${account.description}"></td>
+                                <!-- Remaining balance is calculated and added using Thymeleaf -->
+                                <td th:text="${account.remainingBalance}"></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5">Total Balance:</td>
+                                <td th:text="${totalBalance}"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script th:src="@{/js/feather-icons/feather.min.js}"></script>
+    <script th:src="@{/vendors/perfect-scrollbar/perfect-scrollbar.min.js}"></script>
+    <script th:src="@{/vendors/simple-datatables/simple-datatables.js}"></script>
+    <script th:src="@{/js/vendors.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>

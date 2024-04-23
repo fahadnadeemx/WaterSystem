@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            text-align: left;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Course Details</h2>
+    <div>
+        <p>ID: <span th:text="${course.courseId}"></span></p>
+        <p>Name: <span th:text="${course.courseName}"></span></p>
+    </div>
+    <div>
+        <a th:href="@{/courses/}" style="text-decoration: none;">Back to Course List</a>
+    </div>
+</body>
+</html>

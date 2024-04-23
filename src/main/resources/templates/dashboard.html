@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        .dashboard-section {
+            margin-bottom: 20px;
+        }
+
+        .dashboard-section h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .dashboard-section p {
+            margin-top: 5px;
+            font-size: 16px;
+        }
+
+        .menu {
+            margin-bottom: 20px;
+        }
+
+        .menu a {
+            display: inline-block;
+            padding: 10px;
+            background-color: #f2f2f2;
+            text-decoration: none;
+            color: #333;
+            margin-right: 10px;
+        }
+
+        .menu a:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dashboard</h1>
+    <div class="menu">
+        <a href="/students">Students</a>
+        <a href="/courses">Courses</a>
+        <a href="/batch-list">Batches</a>
+        <a href="/fee-submissions">Fee Submissions</a>
+        <a href="/teachers">Teachers</a>
+        <a href="/teacher-salary-submissions">Teacher Salary Submissions</a>
+    </div>
+    <div class="dashboard-section">
+        <h2>Total Students</h2>
+        <p>Number of students: <span th:text="${totalStudents}"></span></p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Total Teachers</h2>
+        <p>Number of teachers: <span th:text="${totalTeachers}"></span></p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Total Amount Earned in a Month</h2>
+        <p>Total amount earned in the current month: $<span th:text="${totalAmountInMonth}"></span></p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Total Amount Earned in a Year</h2>
+        <p>Total amount earned in the current year: $<span th:text="${totalAmountInYear}"></span></p>
+    </div>
+    <div class="dashboard-section">
+        <h2>Total Batches</h2>
+        <p>Number of batches: <span th:text="${totalBatches}"></span></p>
+    </div>
+    <script>
+        // You can add JavaScript functionalities here if needed
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Salary Submission List</title>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/vendors/simple-datatables/style.css}" rel="stylesheet">
+
+</head>
+
+<body>
+    <div id="main">
+        <div class="main-content container-fluid">
+            <div class="page-title">
+                <div class="row">
+                    <div class="col-12 col-md-6 order-md-1 order-last">
+                        <h3>Teacher Salary Submission List</h3>
+                    </div>
+                </div>
+            </div>
+            <section class="section">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table" id="teacherSalaryTable">
+                            <thead>
+                                <tr>
+                                    <th>Teacher Name</th>
+                                    <th>Course Name</th>
+                                    <th>Batch Name</th>
+                                    <th>Amount Paid</th>
+                                    <th>Salary Paid Date</th>
+                                    <th>Paid By</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="teacherSalarySubmission : ${teacherSalarySubmissions}">
+                                    <td th:text="${teacher.name}"></td>
+                                    <td th:text="${batch.course.courseName}"></td>
+                                    <td th:text="${batch.batchName}"></td>
+                                    <td th:text="${teacherSalarySubmission?.amountPaid != null ? teacherSalarySubmission?.amountPaid : 'EMPTY'}"></td>
+                                    <td th:text="${teacherSalarySubmission?.salaryPaidDate != null ? teacherSalarySubmission?.salaryPaidDate : 'EMPTY'}"></td>
+                                    <td th:text="${teacherSalarySubmission?.paidBy != null ? teacherSalarySubmission?.paidBy : 'EMPTY'}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- Add the link for generating salary -->
+                        <a th:href="@{/teacher-salary-submissions/generate-salary(teacherId=${teacher.teacherId})}">Generate Salary</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script th:src="@{/js/feather-icons/feather.min.js}"></script>
+    <script th:src="@{/js/feather-icons/feather.js.map}"></script>
+    <script th:src="@{/js/feather-icons/feather.js}"></script>
+    <script th:src="@{/js/feather-icons/feather.min.js}"></script>
+    <script th:src="@{/js/feather-icons/feather.min.js.map}"></script>
+    <script th:src="@{/js/pages/dashboard.js}"></script>
+    <script th:src="@{/js/pages/form-editor.js}"></script>
+    <script th:src="@{/js/pages/ui-apexchart.js}"></script>
+    <script th:src="@{/js/pages/ui-chartjs.js}"></script>
+    <script th:src="@{/js/pages/widgets.js}"></script>
+    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/vendors/simple-datatables/simple-datatables.js}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            new simpleDatatables.DataTable("#teacherSalaryTable", {
+                searchable: true
+            });
+        });
+    </script>
+</body>
+</html>
